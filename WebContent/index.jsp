@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -8,6 +8,8 @@
 </head>
 <body>
 <div>测试连接VFC.......</div>
+<div>测试连接VFC FOR GIT.......</div>
+<div>测试连接VFC FOR GITHUB.......CXCX</div>
 
 </body>
 </html>
