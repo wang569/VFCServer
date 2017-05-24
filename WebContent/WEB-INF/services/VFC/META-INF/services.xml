@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.7.4  Built on : Oct 21, 2016 (10:47:34 BST) --><serviceGroup>
+    <service name="VFC">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="fhzvfc.VFCMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">fhzvfc.VFCSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="Logout" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:LogoutRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:LogoutResponse</outputActionMapping>
+        </operation>
+        <operation name="VssTaskControl" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:VssTaskControlRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:VssTaskControlResponse</outputActionMapping>
+        </operation>
+        <operation name="StruSearchImageQuery" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:StruSearchImageQueryRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:StruSearchImageQueryResponse</outputActionMapping>
+        </operation>
+        <operation name="VssSnapNotify" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:VssSnapNotifyRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:VssSnapNotifyResponse</outputActionMapping>
+        </operation>
+        <operation name="Register" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:RegisterRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:RegisterResponse</outputActionMapping>
+        </operation>
+        <operation name="TaskControl" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:TaskControlRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:TaskControlResponse</outputActionMapping>
+        </operation>
+        <operation name="JobStartDownFile" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobStartDownFileRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobStartDownFileResponse</outputActionMapping>
+        </operation>
+        <operation name="SearchImageTaskControl" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:SearchImageTaskControlRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:SearchImageTaskControlResponse</outputActionMapping>
+        </operation>
+        <operation name="SystemAbility" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:SystemAbilityRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:SystemAbilityResponse</outputActionMapping>
+        </operation>
+        <operation name="JobDownFileResultReport" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobDownFileResultReportRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobDownFileResultReportResponse</outputActionMapping>
+        </operation>
+        <operation name="JobDownFileProcessReport" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobDownFileProcessReportRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobDownFileProcessReportResponse</outputActionMapping>
+        </operation>
+        <operation name="JobProcessQuery" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobProcessQueryRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobProcessQueryResponse</outputActionMapping>
+        </operation>
+        <operation name="JobResultNotify" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobResultNotifyRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobResultNotifyResponse</outputActionMapping>
+        </operation>
+        <operation name="HeartBeat" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:HeartBeatRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:HeartBeatResponse</outputActionMapping>
+        </operation>
+        <operation name="QueryJobResult" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:QueryJobResultRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:QueryJobResultResponse</outputActionMapping>
+        </operation>
+        <operation name="QuerySnap" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:QuerySnapRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:QuerySnapResponse</outputActionMapping>
+        </operation>
+        <operation name="JobProcessNotify" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:fhzvfc/VFC.wsdl">
+            <actionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobProcessNotifyRequest</actionMapping>
+            <outputActionMapping>urn:fhzvfc/VFC.wsdl:VFCPortType:JobProcessNotifyResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

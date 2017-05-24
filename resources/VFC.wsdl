@@ -1,0 +1,1045 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="VFC" targetNamespace="urn:fhzvfc/VFC.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:fhzvfc/VFC.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/" xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/" xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/" xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:ns1="urn:fhzvfc" xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <types>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:fhzvfc" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="urn:fhzvfc" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <import namespace="http://www.w3.org/2003/05/soap-envelope"/>
+  <import namespace="http://www.w3.org/2003/05/soap-encoding"/>
+
+  <complexType name="TServerInfo"><!-- TServerInfo -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="ServerID" type="xsd:string"/><!-- TServerInfo::ServerID -->
+     <element maxOccurs="1" minOccurs="1" name="ServerName" type="xsd:string"/><!-- TServerInfo::ServerName -->
+     <element maxOccurs="1" minOccurs="1" name="IPAddr" type="xsd:string"/><!-- TServerInfo::IPAddr -->
+     <element maxOccurs="1" minOccurs="1" name="IPV6Addr" type="xsd:string"/><!-- TServerInfo::IPV6Addr -->
+     <element maxOccurs="1" minOccurs="1" name="Port" type="xsd:int"/><!-- TServerInfo::Port -->
+     <element maxOccurs="1" minOccurs="1" name="MacAddr" type="xsd:string"/><!-- TServerInfo::MacAddr -->
+     <element maxOccurs="1" minOccurs="1" name="FactoryName" type="xsd:string"/><!-- TServerInfo::FactoryName -->
+   </sequence>
+  </complexType>
+  <complexType name="TResult"><!-- TResult -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="ResultMsg" type="xsd:string"/><!-- TResult::ResultMsg -->
+     <element maxOccurs="1" minOccurs="1" name="ResultDesc" type="xsd:string"/><!-- TResult::ResultDesc -->
+   </sequence>
+  </complexType>
+  <complexType name="THeartInfo"><!-- THeartInfo -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- THeartInfo::Result -->
+     <element maxOccurs="1" minOccurs="1" name="TimeMode" type="xsd:int"/><!-- THeartInfo::TimeMode -->
+     <element maxOccurs="1" minOccurs="1" name="LocalTime" type="xsd:string"/><!-- THeartInfo::LocalTime -->
+     <element maxOccurs="1" minOccurs="1" name="TimeZone" type="xsd:string"/><!-- THeartInfo::TimeZone -->
+   </sequence>
+  </complexType>
+  <complexType name="TAbilityDesc"><!-- TAbilityDesc -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TAbilityDesc::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="CapAbility" type="xsd:int"/><!-- TAbilityDesc::CapAbility -->
+     <element maxOccurs="1" minOccurs="1" name="AvailableAbility" type="xsd:int"/><!-- TAbilityDesc::AvailableAbility -->
+   </sequence>
+  </complexType>
+  <complexType name="TAbilityResponse"><!-- TAbilityResponse -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- TAbilityResponse::Result -->
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- TAbilityResponse::Num -->
+     <element maxOccurs="unbounded" minOccurs="0" name="AbilityDesc" type="ns1:TAbilityDesc"/><!-- TAbilityResponse::AbilityDesc -->
+   </sequence>
+  </complexType>
+  <complexType name="TFileInfo"><!-- TFileInfo -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="FileID" type="xsd:string"/><!-- TFileInfo::FileID -->
+     <element maxOccurs="1" minOccurs="1" name="SourceUri" type="xsd:string"/><!-- TFileInfo::SourceUri -->
+     <element maxOccurs="1" minOccurs="1" name="OutputUri" type="xsd:string"/><!-- TFileInfo::OutputUri -->
+     <element maxOccurs="1" minOccurs="1" name="StartTime" type="xsd:string"/><!-- TFileInfo::StartTime -->
+     <element maxOccurs="1" minOccurs="1" name="EndTime" type="xsd:string"/><!-- TFileInfo::EndTime -->
+     <element maxOccurs="1" minOccurs="1" name="FileType" type="xsd:int"/><!-- TFileInfo::FileType -->
+   </sequence>
+  </complexType>
+  <complexType name="TAlgInfo"><!-- TAlgInfo -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="FactoryID" type="xsd:int"/><!-- TAlgInfo::FactoryID -->
+     <element maxOccurs="1" minOccurs="1" name="AlgID" type="xsd:int"/><!-- TAlgInfo::AlgID -->
+     <element maxOccurs="1" minOccurs="1" name="AlgParam" nillable="true" type="xsd:base64Binary"/><!-- TAlgInfo::AlgParam -->
+     <element maxOccurs="1" minOccurs="1" name="AlgRule" nillable="true" type="xsd:base64Binary"/><!-- TAlgInfo::AlgRule -->
+   </sequence>
+  </complexType>
+  <complexType name="TTaskInfo"><!-- TTaskInfo -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TTaskInfo::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="Control" type="xsd:int"/><!-- TTaskInfo::Control -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TTaskInfo::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="RightLevel" type="xsd:int"/><!-- TTaskInfo::RightLevel -->
+     <element maxOccurs="1" minOccurs="1" name="FileInfo" type="ns1:TFileInfo"/><!-- TTaskInfo::FileInfo -->
+     <element maxOccurs="1" minOccurs="1" name="AnlyseRule" type="ns1:TAlgInfo"/><!-- TTaskInfo::AnlyseRule -->
+   </sequence>
+  </complexType>
+  <complexType name="TJobProcess"><!-- TJobProcess -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TJobProcess::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TJobProcess::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="Process" type="xsd:int"/><!-- TJobProcess::Process -->
+     <element maxOccurs="1" minOccurs="1" name="State" type="xsd:int"/><!-- TJobProcess::State -->
+   </sequence>
+  </complexType>
+  <complexType name="TQueryJob"><!-- TQueryJob -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TQueryJob::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TQueryJob::JobType -->
+   </sequence>
+  </complexType>
+  <complexType name="TQueryJobProcessResponse"><!-- TQueryJobProcessResponse -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- TQueryJobProcessResponse::Result -->
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- TQueryJobProcessResponse::Num -->
+     <element maxOccurs="unbounded" minOccurs="0" name="JobProcess" type="ns1:TJobProcess"/><!-- TQueryJobProcessResponse::JobProcess -->
+   </sequence>
+  </complexType>
+  <complexType name="TJobResult"><!-- TJobResult -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TJobResult::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TJobResult::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="State" type="xsd:int"/><!-- TJobResult::State -->
+     <element maxOccurs="1" minOccurs="1" name="SuspectNumber" type="xsd:int"/><!-- TJobResult::SuspectNumber -->
+     <element maxOccurs="1" minOccurs="1" name="VehicleNumber" type="xsd:int"/><!-- TJobResult::VehicleNumber -->
+     <element maxOccurs="1" minOccurs="1" name="ThingNumber" type="xsd:int"/><!-- TJobResult::ThingNumber -->
+   </sequence>
+  </complexType>
+  <complexType name="TQueryResultResponse"><!-- TQueryResultResponse -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- TQueryResultResponse::Result -->
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- TQueryResultResponse::Num -->
+     <element maxOccurs="unbounded" minOccurs="0" name="JobResult" type="ns1:TJobResult"/><!-- TQueryResultResponse::JobResult -->
+   </sequence>
+  </complexType>
+  <complexType name="TQuerySnap"><!-- TQuerySnap -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TQuerySnap::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TQuerySnap::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="CurPageNo" type="xsd:int"/><!-- TQuerySnap::CurPageNo -->
+     <element maxOccurs="1" minOccurs="1" name="PageNo" type="xsd:int"/><!-- TQuerySnap::PageNo -->
+     <element maxOccurs="1" minOccurs="1" name="PageSize" type="xsd:int"/><!-- TQuerySnap::PageSize -->
+     <element maxOccurs="1" minOccurs="1" name="Color" type="xsd:string"/><!-- TQuerySnap::Color -->
+     <element maxOccurs="1" minOccurs="1" name="Direction" type="xsd:string"/><!-- TQuerySnap::Direction -->
+     <element maxOccurs="1" minOccurs="1" name="Feature" type="xsd:string"/><!-- TQuerySnap::Feature -->
+     <element maxOccurs="1" minOccurs="1" name="IndexKey" type="xsd:string"/><!-- TQuerySnap::IndexKey -->
+     <element maxOccurs="1" minOccurs="1" name="Shape" type="xsd:string"/><!-- TQuerySnap::Shape -->
+     <element maxOccurs="1" minOccurs="1" name="Size" type="xsd:string"/><!-- TQuerySnap::Size -->
+     <element maxOccurs="1" minOccurs="1" name="Speed" type="xsd:string"/><!-- TQuerySnap::Speed -->
+     <element maxOccurs="1" minOccurs="1" name="Rule" nillable="true" type="xsd:base64Binary"/><!-- TQuerySnap::Rule -->
+   </sequence>
+  </complexType>
+  <complexType name="TSnapInfo"><!-- TSnapInfo -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Color" type="xsd:string"/><!-- TSnapInfo::Color -->
+     <element maxOccurs="1" minOccurs="1" name="Direction" type="xsd:string"/><!-- TSnapInfo::Direction -->
+     <element maxOccurs="1" minOccurs="1" name="Feature" type="xsd:string"/><!-- TSnapInfo::Feature -->
+     <element maxOccurs="1" minOccurs="1" name="IndexKey" type="xsd:string"/><!-- TSnapInfo::IndexKey -->
+     <element maxOccurs="1" minOccurs="1" name="Shape" type="xsd:string"/><!-- TSnapInfo::Shape -->
+     <element maxOccurs="1" minOccurs="1" name="Size" type="xsd:string"/><!-- TSnapInfo::Size -->
+     <element maxOccurs="1" minOccurs="1" name="Speed" type="xsd:string"/><!-- TSnapInfo::Speed -->
+     <element maxOccurs="1" minOccurs="1" name="OccurrenceTime" type="xsd:string"/><!-- TSnapInfo::OccurrenceTime -->
+     <element maxOccurs="1" minOccurs="1" name="RowKey" type="xsd:string"/><!-- TSnapInfo::RowKey -->
+     <element maxOccurs="1" minOccurs="1" name="SnapType" type="xsd:int"/><!-- TSnapInfo::SnapType -->
+     <element maxOccurs="1" minOccurs="1" name="SnapURI" type="xsd:string"/><!-- TSnapInfo::SnapURI -->
+     <element maxOccurs="1" minOccurs="1" name="ObjectSize" type="xsd:string"/><!-- TSnapInfo::ObjectSize -->
+     <element maxOccurs="1" minOccurs="1" name="RectLeft" type="xsd:int"/><!-- TSnapInfo::RectLeft -->
+     <element maxOccurs="1" minOccurs="1" name="RectRight" type="xsd:int"/><!-- TSnapInfo::RectRight -->
+     <element maxOccurs="1" minOccurs="1" name="RectTop" type="xsd:int"/><!-- TSnapInfo::RectTop -->
+     <element maxOccurs="1" minOccurs="1" name="RectBottom" type="xsd:int"/><!-- TSnapInfo::RectBottom -->
+   </sequence>
+  </complexType>
+  <complexType name="TQuerySnapResponse"><!-- TQuerySnapResponse -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TQuerySnapResponse::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TQuerySnapResponse::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- TQuerySnapResponse::Num -->
+     <element maxOccurs="unbounded" minOccurs="0" name="SnapInfo" type="ns1:TSnapInfo"/><!-- TQuerySnapResponse::SnapInfo -->
+   </sequence>
+  </complexType>
+  <complexType name="TSearchImageJob"><!-- TSearchImageJob -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TSearchImageJob::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="RecordID" type="xsd:string"/><!-- TSearchImageJob::RecordID -->
+     <element maxOccurs="1" minOccurs="1" name="SourceUri" type="xsd:string"/><!-- TSearchImageJob::SourceUri -->
+     <element maxOccurs="1" minOccurs="1" name="OutputUri" type="xsd:string"/><!-- TSearchImageJob::OutputUri -->
+     <element maxOccurs="1" minOccurs="1" name="PuID" type="xsd:string"/><!-- TSearchImageJob::PuID -->
+     <element maxOccurs="1" minOccurs="1" name="StartTime" type="xsd:string"/><!-- TSearchImageJob::StartTime -->
+     <element maxOccurs="1" minOccurs="1" name="EndTime" type="xsd:string"/><!-- TSearchImageJob::EndTime -->
+     <element maxOccurs="1" minOccurs="1" name="ChannelNo" type="xsd:int"/><!-- TSearchImageJob::ChannelNo -->
+     <element maxOccurs="1" minOccurs="1" name="StoreType" type="xsd:int"/><!-- TSearchImageJob::StoreType -->
+     <element maxOccurs="1" minOccurs="1" name="PicID" type="xsd:string"/><!-- TSearchImageJob::PicID -->
+     <element maxOccurs="1" minOccurs="1" name="PicUri" type="xsd:string"/><!-- TSearchImageJob::PicUri -->
+     <element maxOccurs="1" minOccurs="1" name="RectLeft" type="xsd:int"/><!-- TSearchImageJob::RectLeft -->
+     <element maxOccurs="1" minOccurs="1" name="RectTop" type="xsd:int"/><!-- TSearchImageJob::RectTop -->
+     <element maxOccurs="1" minOccurs="1" name="RectRight" type="xsd:int"/><!-- TSearchImageJob::RectRight -->
+     <element maxOccurs="1" minOccurs="1" name="RectBottom" type="xsd:int"/><!-- TSearchImageJob::RectBottom -->
+   </sequence>
+  </complexType>
+  <complexType name="TSearchImageTaskControl"><!-- TSearchImageTaskControl -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- TSearchImageTaskControl::Num -->
+     <element maxOccurs="1" minOccurs="1" name="Control" type="xsd:int"/><!-- TSearchImageTaskControl::Control -->
+     <element maxOccurs="unbounded" minOccurs="0" name="SearchImageTasks" type="ns1:TSearchImageJob"/><!-- TSearchImageTaskControl::SearchImageTasks -->
+     <element maxOccurs="1" minOccurs="1" name="AnlyseRule" type="ns1:TAlgInfo"/><!-- TSearchImageTaskControl::AnlyseRule -->
+     <element maxOccurs="1" minOccurs="1" name="RightLevel" type="xsd:int"/><!-- TSearchImageTaskControl::RightLevel -->
+   </sequence>
+  </complexType>
+  <complexType name="TSImgFeature"><!-- TSImgFeature -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TSImgFeature::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="CurPageNo" type="xsd:int"/><!-- TSImgFeature::CurPageNo -->
+     <element maxOccurs="1" minOccurs="1" name="PageNo" type="xsd:int"/><!-- TSImgFeature::PageNo -->
+     <element maxOccurs="1" minOccurs="1" name="PageSize" type="xsd:int"/><!-- TSImgFeature::PageSize -->
+     <element maxOccurs="1" minOccurs="1" name="ThresHold" type="xsd:int"/><!-- TSImgFeature::ThresHold -->
+     <element maxOccurs="1" minOccurs="1" name="Color" type="xsd:string"/><!-- TSImgFeature::Color -->
+     <element maxOccurs="1" minOccurs="1" name="Direction" type="xsd:string"/><!-- TSImgFeature::Direction -->
+     <element maxOccurs="1" minOccurs="1" name="Feature" type="xsd:string"/><!-- TSImgFeature::Feature -->
+     <element maxOccurs="1" minOccurs="1" name="IndexKey" type="xsd:string"/><!-- TSImgFeature::IndexKey -->
+     <element maxOccurs="1" minOccurs="1" name="Shape" type="xsd:string"/><!-- TSImgFeature::Shape -->
+     <element maxOccurs="1" minOccurs="1" name="Size" type="xsd:string"/><!-- TSImgFeature::Size -->
+     <element maxOccurs="1" minOccurs="1" name="Speed" type="xsd:string"/><!-- TSImgFeature::Speed -->
+     <element maxOccurs="1" minOccurs="1" name="AbsRule" nillable="true" type="xsd:base64Binary"/><!-- TSImgFeature::AbsRule -->
+   </sequence>
+  </complexType>
+  <complexType name="TSImgQueryResp"><!-- TSImgQueryResp -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TSImgQueryResp::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="Color" type="xsd:string"/><!-- TSImgQueryResp::Color -->
+     <element maxOccurs="1" minOccurs="1" name="Direction" type="xsd:string"/><!-- TSImgQueryResp::Direction -->
+     <element maxOccurs="1" minOccurs="1" name="Feature" type="xsd:string"/><!-- TSImgQueryResp::Feature -->
+     <element maxOccurs="1" minOccurs="1" name="IndexKey" type="xsd:string"/><!-- TSImgQueryResp::IndexKey -->
+     <element maxOccurs="1" minOccurs="1" name="RowKey" type="xsd:string"/><!-- TSImgQueryResp::RowKey -->
+     <element maxOccurs="1" minOccurs="1" name="OccurrenceTime" type="xsd:string"/><!-- TSImgQueryResp::OccurrenceTime -->
+     <element maxOccurs="1" minOccurs="1" name="Pic" nillable="true" type="xsd:base64Binary"/><!-- TSImgQueryResp::Pic -->
+     <element maxOccurs="1" minOccurs="1" name="Shape" type="xsd:string"/><!-- TSImgQueryResp::Shape -->
+     <element maxOccurs="1" minOccurs="1" name="Size" type="xsd:string"/><!-- TSImgQueryResp::Size -->
+     <element maxOccurs="1" minOccurs="1" name="SnapType" type="xsd:int"/><!-- TSImgQueryResp::SnapType -->
+     <element maxOccurs="1" minOccurs="1" name="SnapUrl" type="xsd:string"/><!-- TSImgQueryResp::SnapUrl -->
+     <element maxOccurs="1" minOccurs="1" name="Speed" type="xsd:string"/><!-- TSImgQueryResp::Speed -->
+     <element maxOccurs="1" minOccurs="1" name="Similarity" type="xsd:int"/><!-- TSImgQueryResp::Similarity -->
+     <element maxOccurs="1" minOccurs="1" name="ObjectSize" type="xsd:string"/><!-- TSImgQueryResp::ObjectSize -->
+     <element maxOccurs="1" minOccurs="1" name="RectLeft" type="xsd:int"/><!-- TSImgQueryResp::RectLeft -->
+     <element maxOccurs="1" minOccurs="1" name="RectRight" type="xsd:int"/><!-- TSImgQueryResp::RectRight -->
+     <element maxOccurs="1" minOccurs="1" name="RectTop" type="xsd:int"/><!-- TSImgQueryResp::RectTop -->
+     <element maxOccurs="1" minOccurs="1" name="RectBottom" type="xsd:int"/><!-- TSImgQueryResp::RectBottom -->
+   </sequence>
+  </complexType>
+  <complexType name="TSImgQueryInfo"><!-- TSImgQueryInfo -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- TSImgQueryInfo::Result -->
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- TSImgQueryInfo::Num -->
+     <element maxOccurs="unbounded" minOccurs="0" name="SImgQueryResp" type="ns1:TSImgQueryResp"/><!-- TSImgQueryInfo::SImgQueryResp -->
+   </sequence>
+  </complexType>
+  <complexType name="TDownTask"><!-- TDownTask -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TDownTask::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TDownTask::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- TDownTask::Num -->
+     <element maxOccurs="unbounded" minOccurs="0" name="FileUri" type="xsd:string"/><!-- TDownTask::FileUri -->
+   </sequence>
+  </complexType>
+  <complexType name="TFileDownProcess"><!-- TFileDownProcess -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="FileUri" type="xsd:string"/><!-- TFileDownProcess::FileUri -->
+     <element maxOccurs="1" minOccurs="1" name="Process" type="xsd:int"/><!-- TFileDownProcess::Process -->
+     <element maxOccurs="1" minOccurs="1" name="State" type="xsd:int"/><!-- TFileDownProcess::State -->
+   </sequence>
+  </complexType>
+  <complexType name="TFileDownProcessReport"><!-- TFileDownProcessReport -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TFileDownProcessReport::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TFileDownProcessReport::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- TFileDownProcessReport::Num -->
+     <element maxOccurs="unbounded" minOccurs="0" name="DownProcess" type="ns1:TFileDownProcess"/><!-- TFileDownProcessReport::DownProcess -->
+   </sequence>
+  </complexType>
+  <complexType name="TFileDownResult"><!-- TFileDownResult -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="FileUri" type="xsd:string"/><!-- TFileDownResult::FileUri -->
+     <element maxOccurs="1" minOccurs="1" name="State" type="xsd:int"/><!-- TFileDownResult::State -->
+   </sequence>
+  </complexType>
+  <complexType name="TFileDownResultReport"><!-- TFileDownResultReport -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TFileDownResultReport::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TFileDownResultReport::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="DownUri" type="xsd:string"/><!-- TFileDownResultReport::DownUri -->
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- TFileDownResultReport::Num -->
+     <element maxOccurs="unbounded" minOccurs="0" name="DownResult" type="ns1:TFileDownResult"/><!-- TFileDownResultReport::DownResult -->
+   </sequence>
+  </complexType>
+  <complexType name="TSrcJobInfo"><!-- TSrcJobInfo -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TSrcJobInfo::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TSrcJobInfo::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="FileID" type="xsd:string"/><!-- TSrcJobInfo::FileID -->
+     <element maxOccurs="1" minOccurs="1" name="SourceUri" type="xsd:string"/><!-- TSrcJobInfo::SourceUri -->
+     <element maxOccurs="1" minOccurs="1" name="OutputUri" type="xsd:string"/><!-- TSrcJobInfo::OutputUri -->
+     <element maxOccurs="1" minOccurs="1" name="StartTime" type="xsd:string"/><!-- TSrcJobInfo::StartTime -->
+     <element maxOccurs="1" minOccurs="1" name="EndTime" type="xsd:string"/><!-- TSrcJobInfo::EndTime -->
+     <element maxOccurs="1" minOccurs="1" name="FileType" type="xsd:int"/><!-- TSrcJobInfo::FileType -->
+   </sequence>
+  </complexType>
+  <complexType name="TVssTaskInfo"><!-- TVssTaskInfo -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TVssTaskInfo::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="Control" type="xsd:int"/><!-- TVssTaskInfo::Control -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TVssTaskInfo::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="RightLevel" type="xsd:int"/><!-- TVssTaskInfo::RightLevel -->
+     <element maxOccurs="1" minOccurs="1" name="SrcNum" type="xsd:int"/><!-- TVssTaskInfo::SrcNum -->
+     <element maxOccurs="unbounded" minOccurs="0" name="SrcJobInfo" type="ns1:TSrcJobInfo"/><!-- TVssTaskInfo::SrcJobInfo -->
+     <element maxOccurs="1" minOccurs="1" name="AnlyseRule" type="ns1:TAlgInfo"/><!-- TVssTaskInfo::AnlyseRule -->
+   </sequence>
+  </complexType>
+  <complexType name="TVssSnapInfo"><!-- TVssSnapInfo -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Feature" type="xsd:string"/><!-- TVssSnapInfo::Feature -->
+     <element maxOccurs="1" minOccurs="1" name="OccurrenceTime" type="xsd:string"/><!-- TVssSnapInfo::OccurrenceTime -->
+     <element maxOccurs="1" minOccurs="1" name="SnapUri" type="xsd:string"/><!-- TVssSnapInfo::SnapUri -->
+     <element maxOccurs="1" minOccurs="1" name="Similarity" type="xsd:int"/><!-- TVssSnapInfo::Similarity -->
+     <element maxOccurs="1" minOccurs="1" name="Reserve" type="xsd:string"/><!-- TVssSnapInfo::Reserve -->
+   </sequence>
+  </complexType>
+  <complexType name="TVssSnapNotifyInfo"><!-- TVssSnapNotifyInfo -->
+
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="ServerID" type="xsd:string"/><!-- TVssSnapNotifyInfo::ServerID -->
+     <element maxOccurs="1" minOccurs="1" name="JobID" type="xsd:string"/><!-- TVssSnapNotifyInfo::JobID -->
+     <element maxOccurs="1" minOccurs="1" name="JobType" type="xsd:int"/><!-- TVssSnapNotifyInfo::JobType -->
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- TVssSnapNotifyInfo::Num -->
+     <element maxOccurs="unbounded" minOccurs="0" name="VssSnapInfo" type="ns1:TVssSnapInfo"/><!-- TVssSnapNotifyInfo::VssSnapInfo -->
+   </sequence>
+  </complexType>
+  <!-- operation request element -->
+  <element name="Register">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="ServerInfo" type="ns1:TServerInfo"/><!-- ns1__Register::ServerInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="RegisterResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- ns1__Register::Result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="Logout">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="ServerID" type="xsd:string"/><!-- ns1__Logout::ServerID -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="LogoutResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- ns1__Logout::Result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="HeartBeat">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="ServerID" type="xsd:string"/><!-- ns1__HeartBeat::ServerID -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="HeartBeatResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="HeartInfo" type="ns1:THeartInfo"/><!-- ns1__HeartBeat::HeartInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="SystemAbility">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="ServerID" type="xsd:string"/><!-- ns1__SystemAbility::ServerID -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="SystemAbilityResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="AbilityResponse" type="ns1:TAbilityResponse"/><!-- ns1__SystemAbility::AbilityResponse -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="TaskControl">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- ns1__TaskControl::Num -->
+     <element maxOccurs="unbounded" minOccurs="1" name="TaskInfo" type="ns1:TTaskInfo"/><!-- ns1__TaskControl::TaskInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="TaskControlResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- ns1__TaskControl::Result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="JobProcessNotify">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="ServerID" type="xsd:string"/><!-- ns1__JobProcessNotify::ServerID -->
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- ns1__JobProcessNotify::Num -->
+     <element maxOccurs="unbounded" minOccurs="1" name="JobProcess" type="ns1:TJobProcess"/><!-- ns1__JobProcessNotify::JobProcess -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="JobProcessNotifyResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- ns1__JobProcessNotify::Result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="JobProcessQuery">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- ns1__JobProcessQuery::Num -->
+     <element maxOccurs="unbounded" minOccurs="1" name="QueryJob" type="ns1:TQueryJob"/><!-- ns1__JobProcessQuery::QueryJob -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="JobProcessQueryResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="QueryJobProcessResponse" type="ns1:TQueryJobProcessResponse"/><!-- ns1__JobProcessQuery::QueryJobProcessResponse -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="JobResultNotify">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="ServerID" type="xsd:string"/><!-- ns1__JobResultNotify::ServerID -->
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- ns1__JobResultNotify::Num -->
+     <element maxOccurs="unbounded" minOccurs="1" name="JobResult" type="ns1:TJobResult"/><!-- ns1__JobResultNotify::JobResult -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="JobResultNotifyResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- ns1__JobResultNotify::Result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="QueryJobResult">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- ns1__QueryJobResult::Num -->
+     <element maxOccurs="unbounded" minOccurs="1" name="QueryJob" type="ns1:TQueryJob"/><!-- ns1__QueryJobResult::QueryJob -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="QueryJobResultResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="QueryResultResponse" type="ns1:TQueryResultResponse"/><!-- ns1__QueryJobResult::QueryResultResponse -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="QuerySnap">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="QuerySnap" type="ns1:TQuerySnap"/><!-- ns1__QuerySnap::QuerySnap -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="QuerySnapResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="QuerySnapResponse" type="ns1:TQuerySnapResponse"/><!-- ns1__QuerySnap::QuerySnapResponse -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="SearchImageTaskControl">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="SearchImageInfo" type="ns1:TSearchImageTaskControl"/><!-- ns1__SearchImageTaskControl::SearchImageInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="SearchImageTaskControlResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- ns1__SearchImageTaskControl::Result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="StruSearchImageQuery">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="SImgFeature" type="ns1:TSImgFeature"/><!-- ns1__StruSearchImageQuery::SImgFeature -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="StruSearchImageQueryResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="SImgQueryInfo" type="ns1:TSImgQueryInfo"/><!-- ns1__StruSearchImageQuery::SImgQueryInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="JobStartDownFile">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="DownTask" type="ns1:TDownTask"/><!-- ns1__JobStartDownFile::DownTask -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="JobStartDownFileResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- ns1__JobStartDownFile::Result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="JobDownFileProcessReport">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="ServerID" type="xsd:string"/><!-- ns1__JobDownFileProcessReport::ServerID -->
+     <element maxOccurs="1" minOccurs="1" name="ProcessReport" type="ns1:TFileDownProcessReport"/><!-- ns1__JobDownFileProcessReport::ProcessReport -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="JobDownFileProcessReportResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- ns1__JobDownFileProcessReport::Result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="JobDownFileResultReport">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="ServerID" type="xsd:string"/><!-- ns1__JobDownFileResultReport::ServerID -->
+     <element maxOccurs="1" minOccurs="1" name="ResultReport" type="ns1:TFileDownResultReport"/><!-- ns1__JobDownFileResultReport::ResultReport -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="JobDownFileResultReportResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- ns1__JobDownFileResultReport::Result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="VssTaskControl">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Num" type="xsd:int"/><!-- ns1__VssTaskControl::Num -->
+     <element maxOccurs="unbounded" minOccurs="1" name="VssTaskInfo" type="ns1:TVssTaskInfo"/><!-- ns1__VssTaskControl::VssTaskInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="VssTaskControlResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- ns1__VssTaskControl::Result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="VssSnapNotify">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="VssSnapNotifyInfo" type="ns1:TVssSnapNotifyInfo"/><!-- ns1__VssSnapNotify::VssSnapNotifyInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="VssSnapNotifyResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="Result" type="ns1:TResult"/><!-- ns1__VssSnapNotify::Result -->
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+  </types>
+  <message name="SearchImageTaskControlResponse">
+    <part name="Body" element="ns1:SearchImageTaskControlResponse">
+    </part>
+  </message>
+  <message name="SystemAbilityRequest">
+    <part name="Body" element="ns1:SystemAbility">
+    </part>
+  </message>
+  <message name="SearchImageTaskControlRequest">
+    <part name="Body" element="ns1:SearchImageTaskControl">
+    </part>
+  </message>
+  <message name="HeartBeatRequest">
+    <part name="Body" element="ns1:HeartBeat">
+    </part>
+  </message>
+  <message name="RegisterResponse">
+    <part name="Body" element="ns1:RegisterResponse">
+    </part>
+  </message>
+  <message name="LogoutRequest">
+    <part name="Body" element="ns1:Logout">
+    </part>
+  </message>
+  <message name="HeartBeatResponse">
+    <part name="Body" element="ns1:HeartBeatResponse">
+    </part>
+  </message>
+  <message name="JobProcessNotifyResponse">
+    <part name="Body" element="ns1:JobProcessNotifyResponse">
+    </part>
+  </message>
+  <message name="SystemAbilityResponse">
+    <part name="Body" element="ns1:SystemAbilityResponse">
+    </part>
+  </message>
+  <message name="TaskControlRequest">
+    <part name="Body" element="ns1:TaskControl">
+    </part>
+  </message>
+  <message name="StruSearchImageQueryResponse">
+    <part name="Body" element="ns1:StruSearchImageQueryResponse">
+    </part>
+  </message>
+  <message name="JobStartDownFileResponse">
+    <part name="Body" element="ns1:JobStartDownFileResponse">
+    </part>
+  </message>
+  <message name="VssSnapNotifyRequest">
+    <part name="Body" element="ns1:VssSnapNotify">
+    </part>
+  </message>
+  <message name="JobResultNotifyRequest">
+    <part name="Body" element="ns1:JobResultNotify">
+    </part>
+  </message>
+  <message name="JobStartDownFileRequest">
+    <part name="Body" element="ns1:JobStartDownFile">
+    </part>
+  </message>
+  <message name="JobDownFileResultReportRequest">
+    <part name="Body" element="ns1:JobDownFileResultReport">
+    </part>
+  </message>
+  <message name="JobResultNotifyResponse">
+    <part name="Body" element="ns1:JobResultNotifyResponse">
+    </part>
+  </message>
+  <message name="QueryJobResultResponse">
+    <part name="Body" element="ns1:QueryJobResultResponse">
+    </part>
+  </message>
+  <message name="JobProcessQueryResponse">
+    <part name="Body" element="ns1:JobProcessQueryResponse">
+    </part>
+  </message>
+  <message name="StruSearchImageQueryRequest">
+    <part name="Body" element="ns1:StruSearchImageQuery">
+    </part>
+  </message>
+  <message name="QuerySnapRequest">
+    <part name="Body" element="ns1:QuerySnap">
+    </part>
+  </message>
+  <message name="JobDownFileProcessReportResponse">
+    <part name="Body" element="ns1:JobDownFileProcessReportResponse">
+    </part>
+  </message>
+  <message name="JobProcessQueryRequest">
+    <part name="Body" element="ns1:JobProcessQuery">
+    </part>
+  </message>
+  <message name="JobDownFileProcessReportRequest">
+    <part name="Body" element="ns1:JobDownFileProcessReport">
+    </part>
+  </message>
+  <message name="LogoutResponse">
+    <part name="Body" element="ns1:LogoutResponse">
+    </part>
+  </message>
+  <message name="JobProcessNotifyRequest">
+    <part name="Body" element="ns1:JobProcessNotify">
+    </part>
+  </message>
+  <message name="JobDownFileResultReportResponse">
+    <part name="Body" element="ns1:JobDownFileResultReportResponse">
+    </part>
+  </message>
+  <message name="VssTaskControlRequest">
+    <part name="Body" element="ns1:VssTaskControl">
+    </part>
+  </message>
+  <message name="VssSnapNotifyResponse">
+    <part name="Body" element="ns1:VssSnapNotifyResponse">
+    </part>
+  </message>
+  <message name="RegisterRequest">
+    <part name="Body" element="ns1:Register">
+    </part>
+  </message>
+  <message name="TaskControlResponse">
+    <part name="Body" element="ns1:TaskControlResponse">
+    </part>
+  </message>
+  <message name="QuerySnapResponse">
+    <part name="Body" element="ns1:QuerySnapResponse">
+    </part>
+  </message>
+  <message name="VssTaskControlResponse">
+    <part name="Body" element="ns1:VssTaskControlResponse">
+    </part>
+  </message>
+  <message name="QueryJobResultRequest">
+    <part name="Body" element="ns1:QueryJobResult">
+    </part>
+  </message>
+  <portType name="VFCPortType">
+    <operation name="Register">
+<documentation>Service definition of function ns1__Register</documentation>
+      <input message="tns:RegisterRequest">
+    </input>
+      <output message="tns:RegisterResponse">
+    </output>
+    </operation>
+    <operation name="Logout">
+<documentation>Service definition of function ns1__Logout</documentation>
+      <input message="tns:LogoutRequest">
+    </input>
+      <output message="tns:LogoutResponse">
+    </output>
+    </operation>
+    <operation name="HeartBeat">
+<documentation>Service definition of function ns1__HeartBeat</documentation>
+      <input message="tns:HeartBeatRequest">
+    </input>
+      <output message="tns:HeartBeatResponse">
+    </output>
+    </operation>
+    <operation name="SystemAbility">
+<documentation>Service definition of function ns1__SystemAbility</documentation>
+      <input message="tns:SystemAbilityRequest">
+    </input>
+      <output message="tns:SystemAbilityResponse">
+    </output>
+    </operation>
+    <operation name="TaskControl">
+<documentation>Service definition of function ns1__TaskControl</documentation>
+      <input message="tns:TaskControlRequest">
+    </input>
+      <output message="tns:TaskControlResponse">
+    </output>
+    </operation>
+    <operation name="JobProcessNotify">
+<documentation>Service definition of function ns1__JobProcessNotify</documentation>
+      <input message="tns:JobProcessNotifyRequest">
+    </input>
+      <output message="tns:JobProcessNotifyResponse">
+    </output>
+    </operation>
+    <operation name="JobProcessQuery">
+<documentation>Service definition of function ns1__JobProcessQuery</documentation>
+      <input message="tns:JobProcessQueryRequest">
+    </input>
+      <output message="tns:JobProcessQueryResponse">
+    </output>
+    </operation>
+    <operation name="JobResultNotify">
+<documentation>Service definition of function ns1__JobResultNotify</documentation>
+      <input message="tns:JobResultNotifyRequest">
+    </input>
+      <output message="tns:JobResultNotifyResponse">
+    </output>
+    </operation>
+    <operation name="QueryJobResult">
+<documentation>Service definition of function ns1__QueryJobResult</documentation>
+      <input message="tns:QueryJobResultRequest">
+    </input>
+      <output message="tns:QueryJobResultResponse">
+    </output>
+    </operation>
+    <operation name="QuerySnap">
+<documentation>Service definition of function ns1__QuerySnap</documentation>
+      <input message="tns:QuerySnapRequest">
+    </input>
+      <output message="tns:QuerySnapResponse">
+    </output>
+    </operation>
+    <operation name="SearchImageTaskControl">
+<documentation>Service definition of function ns1__SearchImageTaskControl</documentation>
+      <input message="tns:SearchImageTaskControlRequest">
+    </input>
+      <output message="tns:SearchImageTaskControlResponse">
+    </output>
+    </operation>
+    <operation name="StruSearchImageQuery">
+<documentation>Service definition of function ns1__StruSearchImageQuery</documentation>
+      <input message="tns:StruSearchImageQueryRequest">
+    </input>
+      <output message="tns:StruSearchImageQueryResponse">
+    </output>
+    </operation>
+    <operation name="JobStartDownFile">
+<documentation>Service definition of function ns1__JobStartDownFile</documentation>
+      <input message="tns:JobStartDownFileRequest">
+    </input>
+      <output message="tns:JobStartDownFileResponse">
+    </output>
+    </operation>
+    <operation name="JobDownFileProcessReport">
+<documentation>Service definition of function ns1__JobDownFileProcessReport</documentation>
+      <input message="tns:JobDownFileProcessReportRequest">
+    </input>
+      <output message="tns:JobDownFileProcessReportResponse">
+    </output>
+    </operation>
+    <operation name="JobDownFileResultReport">
+<documentation>Service definition of function ns1__JobDownFileResultReport</documentation>
+      <input message="tns:JobDownFileResultReportRequest">
+    </input>
+      <output message="tns:JobDownFileResultReportResponse">
+    </output>
+    </operation>
+    <operation name="VssTaskControl">
+<documentation>Service definition of function ns1__VssTaskControl</documentation>
+      <input message="tns:VssTaskControlRequest">
+    </input>
+      <output message="tns:VssTaskControlResponse">
+    </output>
+    </operation>
+    <operation name="VssSnapNotify">
+<documentation>Service definition of function ns1__VssSnapNotify</documentation>
+      <input message="tns:VssSnapNotifyRequest">
+    </input>
+      <output message="tns:VssSnapNotifyResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="VFC" type="tns:VFCPortType">
+    <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Register">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="Logout">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="HeartBeat">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="SystemAbility">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="TaskControl">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="JobProcessNotify">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="JobProcessQuery">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="JobResultNotify">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="QueryJobResult">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="QuerySnap">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="SearchImageTaskControl">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="StruSearchImageQuery">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="JobStartDownFile">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="JobDownFileProcessReport">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="JobDownFileResultReport">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="VssTaskControl">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+    <operation name="VssSnapNotify">
+      <SOAP:operation/>
+      <input>
+        <SOAP:body parts="Body" use="literal"/>
+      </input>
+      <output>
+        <SOAP:body parts="Body" use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="VFC">
+<documentation>VFC interface</documentation>
+    <port name="VFC" binding="tns:VFC">
+      <SOAP:address location="http://localhost:80"/>
+    </port>
+  </service>
+</definitions>
